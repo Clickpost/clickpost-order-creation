@@ -1,4 +1,5 @@
 <?php
+namespace ClickPost\Service\Object;
 
 class CourierRecommendData{
     private $pickup_pincode;

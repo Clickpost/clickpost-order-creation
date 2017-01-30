@@ -1,4 +1,7 @@
 <?php
+namespace ClickPost\Service;
+include 'CourierRecommendService.php';
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,13 +9,12 @@
  */
 
 class CourierRecommendImpl implements CourierRecommendService{
-    
 
-   
 
-    public function getCourierCompany(\CourierRecommendData $recommend_data) {
+    public function getCourierCompany(CourierRecommendData $recommend_data) {
         
     }
+   
 
 }
 
