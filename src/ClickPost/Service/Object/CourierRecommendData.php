@@ -1,7 +1,6 @@
 <?php
 
-
-class CourierRecommendData {
+class CourierRecommendData{
     private $pickup_pincode;
     private $drop_pincode_;
     private $order_type;
