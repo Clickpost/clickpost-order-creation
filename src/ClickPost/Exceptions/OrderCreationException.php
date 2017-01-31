@@ -6,7 +6,7 @@ namespace ClickPost\Exceptions;
  * and open the template in the editor.
  */
 
-class OrderCreationException extends Exception{
+class OrderCreationException extends \Exception{
     public function __construct($message, $code, $previous= null) {
         parent::__construct($message, $code, $previous);
     }
