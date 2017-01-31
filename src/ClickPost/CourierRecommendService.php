@@ -1,5 +1,5 @@
 <?php
-namespace ClickPost\Service;
+namespace ClickPost;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

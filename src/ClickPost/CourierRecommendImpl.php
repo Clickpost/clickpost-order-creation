@@ -1,11 +1,12 @@
 <?php
-namespace ClickPost\Service;
+namespace ClickPost;
 include 'CourierRecommendService.php';
 require 'vendor/autoload.php'; 
 include 'Object/CourierRecommendResponse.php';
+include 'Exceptions/CourierRecommendationException.php';
 use GuzzleHttp\Client;
-use \ClickPost\Service\Object\CourierRecommendData;
-use \ClickPost\Service\Object\CourierRecommendResponse;
+use \ClickPost\Object\CourierRecommendData;
+use \ClickPost\Object\CourierRecommendResponse;
 use \ClickPost\Exceptions\CourierRecommendationException;
 
 /* 
@@ -15,6 +16,7 @@ use \ClickPost\Exceptions\CourierRecommendationException;
  */
 
 class CourierRecommendImpl implements CourierRecommendService{
+    
 
     public function getCourierCompany(CourierRecommendData $recommend_data) {
         $client = new Client([
@@ -22,7 +24,7 @@ class CourierRecommendImpl implements CourierRecommendService{
         ]);
         $response = $client->post('https://www.clickpost.in/api/v1/recommendation_api/?key=2e9b19ac-8e1f-41ac-a35b-4cd23f41ae17',
                 ['body' => json_encode(
-                    [[
+                    [
                         "pickup_pincode"=> $recommend_data->getPickup_pincode(),
                         "drop_pincode"=> $recommend_data->getDrop_pincode(),
                         "order_type"=> $recommend_data->getOrder_type(),
@@ -34,12 +36,9 @@ class CourierRecommendImpl implements CourierRecommendService{
                         "height"=> $recommend_data->getHeight(),
                         "length"=> $recommend_data->getLength(),
                         "breadth"=> $recommend_data->getBreadth()
-                    ]]
+                    ]
     )]);
-        if ($response->getStatusCode() != 200){
-            throw new CourierRecommendationException("Exception In Clickpost Courier Recommendation",
-                    $response->getStatusCode());
-        }
+        $this->parseMeta($response);
         return $this->parseClickPostResponse($response);
     }
     
@@ -52,6 +51,14 @@ class CourierRecommendImpl implements CourierRecommendService{
             $courier_recommend_array->append($courier_recommend_response);
         }
         return $courier_recommend_array;
+    }
+    
+    private function parseMeta($response_body){
+        $meta_object = \GuzzleHttp\json_decode($response_body->getBody())->meta;
+        if ($meta_object->status != 200){
+            throw new CourierRecommendationException($meta_object->message,
+                    $meta_object->status);
+        }
     }
   
 }
