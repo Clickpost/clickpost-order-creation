@@ -18,9 +18,10 @@ use \ClickPost\Exceptions\CourierRecommendationException;
 class CourierRecommendImpl implements CourierRecommendService{
     
 
-    public function getCourierCompany(CourierRecommendData $recommend_data) {
+    public function getCourierCompany(CourierRecommendData $recommend_data, $key) {
         $client = new Client([
-            'headers' => [ 'Content-Type' => 'application/json' ]
+            'headers' => [ 'Content-Type' => 'application/json' ],
+            'query'=>['key'=>$key]
         ]);
         $response = $client->post('https://www.clickpost.in/api/v1/recommendation_api/?key=2e9b19ac-8e1f-41ac-a35b-4cd23f41ae17',
                 ['body' => $recommend_data->jsonSerialize()]);
