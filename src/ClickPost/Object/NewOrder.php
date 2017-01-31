@@ -1,12 +1,12 @@
 <?php
 namespace ClickPost\Object;
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class NewOrder implements JsonSerializable{
-    
+class NewOrder implements \JsonSerializable {
+
     private $drop_pincode;
     private $priority;
     private $drop_name;
@@ -38,13 +38,8 @@ class NewOrder implements JsonSerializable{
     private $reference_number;
     private $length;
     private $rvp_reason;
-    
-    function __construct($drop_pincode, $priority, $drop_name, $drop_state, $invoice_number,
-            $drop_country, $courier_partner, $breadth, $tin, $height, $code_value,
-            $pickup_name, $weight, $pickup_country, $drop_address, $order_type,
-            $invoice_value, $drop_city, $pickup_time, $invoice_date, $pickup_state,
-            $pickup_city, $drop_phone, $email, $pickup_phone, $delivery_type, $pickup_address,
-            $pickup_pincode, $reference_number, $length, $rvp_reason) {
+
+    function __construct($drop_pincode, $priority, $drop_name, $drop_state, $invoice_number, $drop_country, $courier_partner, $breadth, $tin, $height, $code_value, $pickup_name, $weight, $pickup_country, $drop_address, $order_type, $invoice_value, $drop_city, $pickup_time, $invoice_date, $pickup_state, $pickup_city, $drop_phone, $email, $pickup_phone, $delivery_type, $pickup_address, $pickup_pincode, $reference_number, $length, $rvp_reason) {
         $this->drop_pincode = $drop_pincode;
         $this->priority = $priority;
         $this->drop_name = $drop_name;
@@ -77,7 +72,7 @@ class NewOrder implements JsonSerializable{
         $this->length = $length;
         $this->rvp_reason = $rvp_reason;
     }
-    
+
     function getDrop_pincode() {
         return $this->drop_pincode;
     }
@@ -204,42 +199,41 @@ class NewOrder implements JsonSerializable{
 
     public function jsonSerialize() {
         return [
-            'reference_number' =>$this->getReference_number(),
-            'invoice_date'=> $this->getInvoice_date(),
-            'drop_address'=> $this->getDrop_address(),
-            'priority'=> $this->getPriority(),
-            'courier_partner'=> $this->getCourier_partner(),
-            'invoice_value'=> $this->getInvoice_value(),
-            'delivery_type'=> $this->getDelivery_type(),
-            'pickup_country'=> $this->getPickup_country(),
-            'breadth'=> $this->getBreadth(),
-            'height'=> $this->getHeight(),
-            'length'=> $this->getLength(),
-            'cod_value'=> $this->getCode_value(),
-            'drop_phone'=> $this->getDrop_phone(),
-            'drop_name'=> $this->getDrop_name(),
-            'email'=> $this->getEmail(),
-            'drop_city'=>$this->getDrop_city(),
-            'drop_country'=> $this->getDrop_country(),
-            'invoice_number'=> $this->getInvoice_number(),
-            'rvp_reason'=> $this->getRvp_reason(),
-            'order_type'=> $this->getOrder_type(),
-            'items'=> "[{\"sku\": \"XYZ1\", \"quantity\": 1, \"description\": \"item1\", \"price\": 200}, {\"sku\": \"XYZ2\", \"quantity\": 1, \"description\": \"item2\", \"price\": 300}, {\"sku\": \"XYZ3\", \"quantity\": 2, \"description\": \"item3\", \"price\": 400}]",
-            'drop_state'=> $this->getDrop_state(),
-            'drop_pincode'=> $this->getDrop_pincode(),
-            'weight'=> $this->getWeight(),
-            'pickup_time'=> $this->getPickup_time(),
-            'pickup_address'=> $this->getPickup_address(),
-            'tin'=> $this->getTin(),
-            'pickup_phone'=> $this->getPickup_phone(),
-            'pickup_pincode'=> $this->getPickup_pincode(),
-            'pickup_city'=> $this->getPickup_city(),
-            'pickup_state'=> $this->getPickup_state(),
-            'pickup_name'=>$this->getPickup_name()
-            ];
+            'reference_number' => $this->getReference_number(),
+            'invoice_date' => $this->getInvoice_date(),
+            'drop_address' => $this->getDrop_address(),
+            'priority' => $this->getPriority(),
+            'courier_partner' => $this->getCourier_partner(),
+            'invoice_value' => $this->getInvoice_value(),
+            'delivery_type' => $this->getDelivery_type(),
+            'pickup_country' => $this->getPickup_country(),
+            'breadth' => $this->getBreadth(),
+            'height' => $this->getHeight(),
+            'length' => $this->getLength(),
+            'cod_value' => $this->getCode_value(),
+            'drop_phone' => $this->getDrop_phone(),
+            'drop_name' => $this->getDrop_name(),
+            'email' => $this->getEmail(),
+            'drop_city' => $this->getDrop_city(),
+            'drop_country' => $this->getDrop_country(),
+            'invoice_number' => $this->getInvoice_number(),
+            'rvp_reason' => $this->getRvp_reason(),
+            'order_type' => $this->getOrder_type(),
+            'items' => "[{\"sku\": \"XYZ1\", \"quantity\": 1, \"description\": \"item1\", \"price\": 200}, {\"sku\": \"XYZ2\", \"quantity\": 1, \"description\": \"item2\", \"price\": 300}, {\"sku\": \"XYZ3\", \"quantity\": 2, \"description\": \"item3\", \"price\": 400}]",
+            'drop_state' => $this->getDrop_state(),
+            'drop_pincode' => $this->getDrop_pincode(),
+            'weight' => $this->getWeight(),
+            'pickup_time' => $this->getPickup_time(),
+            'pickup_address' => $this->getPickup_address(),
+            'tin' => $this->getTin(),
+            'pickup_phone' => $this->getPickup_phone(),
+            'pickup_pincode' => $this->getPickup_pincode(),
+            'pickup_city' => $this->getPickup_city(),
+            'pickup_state' => $this->getPickup_state(),
+            'pickup_name' => $this->getPickup_name()
+        ];
     }
 
 }
-
 ?>
 

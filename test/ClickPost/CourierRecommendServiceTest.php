@@ -13,19 +13,11 @@ use ClickPost\Object\CourierRecommendData;
  */
 
 class CourierRecommendServiceTest extends \PHPUnit\Framework\TestCase{
-    
-    
     public function testCourierRecommend(){
         echo "Testing Clickpost Courier Recommnedation Service";
         $this->assertEquals(1, 1);
         
-    }
-    
-    
-    
-    
-   
-    
+    }   
 }
 
 ?>

@@ -74,7 +74,7 @@ class CourierRecommendData implements \JsonSerializable{
     }
 
     public function jsonSerialize() {
-        return [
+        return [[
             'pickup_pincode'=>$this->getPickup_pincode(),
             'drop_pincode' => $this->getDrop_pincode(),
             'order_type'=>$this->getOrder_type(),
@@ -86,7 +86,7 @@ class CourierRecommendData implements \JsonSerializable{
             'delivery_type'=>$this->getDelivery_type(),
             'reference_number'=>$this->getReference_number(),
             'breadth'=>$this->getBreadth()
-        ];
+        ]];
     }
 
 }

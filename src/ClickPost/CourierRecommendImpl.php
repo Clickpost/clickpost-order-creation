@@ -23,21 +23,7 @@ class CourierRecommendImpl implements CourierRecommendService{
             'headers' => [ 'Content-Type' => 'application/json' ]
         ]);
         $response = $client->post('https://www.clickpost.in/api/v1/recommendation_api/?key=2e9b19ac-8e1f-41ac-a35b-4cd23f41ae17',
-                ['body' => json_encode(
-                    [
-                        "pickup_pincode"=> $recommend_data->getPickup_pincode(),
-                        "drop_pincode"=> $recommend_data->getDrop_pincode(),
-                        "order_type"=> $recommend_data->getOrder_type(),
-                        "reference_number"=> $recommend_data->getReference_number(),
-                        "item"=> $recommend_data->getItem_name(),
-                        "invoice_value"=> $recommend_data->getInvoice_value(),
-                        "delivery_type"=> $recommend_data->getDelivery_type(),
-                        "weight"=> $recommend_data->getWeight(),
-                        "height"=> $recommend_data->getHeight(),
-                        "length"=> $recommend_data->getLength(),
-                        "breadth"=> $recommend_data->getBreadth()
-                    ]
-    )]);
+                ['body' => $recommend_data->jsonSerialize()]);
         $this->parseMeta($response);
         return $this->parseClickPostResponse($response);
     }
