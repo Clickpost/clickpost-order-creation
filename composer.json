@@ -1,7 +1,7 @@
 {
     
     "name": "clickpost/clickpost-order-creation",
-            
+    "version":"1.0.0",
     "require": {
       "guzzlehttp/guzzle": "~6.0"
    },
