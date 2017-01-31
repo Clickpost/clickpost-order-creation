@@ -13,7 +13,7 @@ namespace ClickPost;
  */
 interface CourierRecommendService {
     
-    public function getCourierCompany(Object\CourierRecommendData $recommend_data); 
+    public function getCourierCompany(Object\CourierRecommendData $recommend_data, $key); 
     //put your code here
 }
 
