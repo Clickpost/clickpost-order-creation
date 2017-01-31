@@ -2,6 +2,7 @@
 namespace ClickPost;
 include 'OrderCreationService.php';
 include_once 'Object/NewOrder.php';
+include_once 'Object/UserConfig.php';
 include 'Exceptions/OrderCreationException.php';
 include 'Object/OrderResponse.php';
 require 'vendor/autoload.php'; 
@@ -10,6 +11,7 @@ use ClickPost\OrderCreationService;
 use ClickPost\Object\NewOrder;
 use ClickPost\Exceptions\OrderCreationException;
 use ClickPost\Object\OrderResponse;
+use ClickPost\Object\UserConfig;
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,12 +20,14 @@ use ClickPost\Object\OrderResponse;
 
 class OrderCreationImpl implements OrderCreationService{
     
-    public function createOrder(NewOrder $new_order) {
+    public function createOrder(NewOrder $new_order, UserConfig $user_config) {
         $json_object = $new_order->jsonSerialize();
         $client = new Client([
-            'headers' => [ 'Content-Type' => 'application/json' ]
+            'headers' => [ 'Content-Type' => 'application/json' ],
+            'query' => ['key'=>$user_config->getKey(),
+                        'username' => $user_config->getUser_name()]
         ]);
-        $response = $client->post('https://www.clickpost.in/api/v1/create-order/?key=2e9b19ac-8e1f-41ac-a35b-4cd23f41ae17',
+        $response = $client->post('https://www.clickpost.in/api/v1/create-order/',
                 ['body' => $recommend_data->jsonSerialize()]);
         if ($response->getStatusCode() != 200){
             throw new OrderCreationException("Internal Server Error In Clickpost Server ",
