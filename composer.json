@@ -1,4 +1,7 @@
 {
+    
+    "name": "clickpost/clickpost-order-creation",
+            
     "require": {
       "guzzlehttp/guzzle": "~6.0"
    },
@@ -6,12 +9,12 @@
         "phpunit/phpunit": "5.5.*"
     },
     "autoload": {
-        "psr-4": {
+        "psr-0": {
             "ClickPost\\": "src/"
         }
     },
     "autoload-dev": {
-        "psr-4": {
+        "psr-0": {
             "ClickPost\\Tests\\": "test/"
         }
     }
