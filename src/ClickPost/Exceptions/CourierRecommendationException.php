@@ -6,7 +6,7 @@ namespace ClickPost\Exceptions;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class CourierRecommendationException extends Exception{
+class CourierRecommendationException extends \Exception{
     public function __construct($message,$code,$previous=null) {
         parent::__construct($message, $code, $previous);
     }

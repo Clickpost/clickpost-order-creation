@@ -1,6 +1,6 @@
 <?php
 
-namespace ClickPost\Service\Object;
+namespace ClickPost\Object;
 class CourierRecommendData implements \JsonSerializable{
     private $pickup_pincode;
     private $drop_pincode;
