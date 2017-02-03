@@ -1,5 +1,6 @@
 <?php
 namespace ClickPost\Object;
+include_once 'Item.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -39,7 +40,12 @@ class NewOrder implements \JsonSerializable {
     private $length;
     private $rvp_reason;
 
-    function __construct($drop_pincode, $priority, $drop_name, $drop_state, $invoice_number, $drop_country, $courier_partner, $breadth, $tin, $height, $code_value, $pickup_name, $weight, $pickup_country, $drop_address, $order_type, $invoice_value, $drop_city, $pickup_time, $invoice_date, $pickup_state, $pickup_city, $drop_phone, $email, $pickup_phone, $delivery_type, $pickup_address, $pickup_pincode, $reference_number, $length, $rvp_reason) {
+    function __construct($drop_pincode, $priority, $drop_name, $drop_state, $invoice_number, 
+            $drop_country, $courier_partner, $breadth, $tin, $height, $code_value,
+            $pickup_name, $weight, $pickup_country, $drop_address, $order_type, $invoice_value,
+            $drop_city, $pickup_time, $invoice_date, $pickup_state, $pickup_city, $drop_phone,
+            $email, $pickup_phone, $delivery_type, $pickup_address, $pickup_pincode, 
+            $reference_number, $length, $rvp_reason) {
         $this->drop_pincode = $drop_pincode;
         $this->priority = $priority;
         $this->drop_name = $drop_name;

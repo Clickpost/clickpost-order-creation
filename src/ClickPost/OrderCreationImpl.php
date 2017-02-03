@@ -28,7 +28,7 @@ class OrderCreationImpl implements OrderCreationService{
                         'username' => $user_config->getUser_name()]
         ]);
         $response = $client->post('https://www.clickpost.in/api/v1/create-order/',
-                ['body' => $recommend_data->jsonSerialize()]);
+                ['body' => json_encode($json_object)]);
         if ($response->getStatusCode() != 200){
             throw new OrderCreationException("Internal Server Error In Clickpost Server ",
                     $response->getStatusCode());
@@ -39,13 +39,13 @@ class OrderCreationImpl implements OrderCreationService{
     }
     
     private function parserResult($response_object){
-        $waybill = \GuzzleHttp\json_decode($response_body->getBody()->result->waybill);
-        $shipping_url = \GuzzleHttp\json_decode($response_body->getBody()->result->label);
+        $waybill = \GuzzleHttp\json_decode($response_object->getBody())->result->waybill;
+        $shipping_url = \GuzzleHttp\json_decode($response_object->getBody())->result->label;
         return new OrderResponse($waybill, $shipping_url);
     }
     
     private function parseMeta($response_object){
-        $meta_object = \GuzzleHttp\json_decode($response_body->getBody()->meta);
+        $meta_object = \GuzzleHttp\json_decode($response_object->getBody())->meta;
         if ($meta_object->status != 200){
             throw new OrderCreationException($meta_object->message, $meta_object->status);
         }
