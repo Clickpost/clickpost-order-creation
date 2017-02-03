@@ -79,7 +79,7 @@ class CourierRecommendData implements \JsonSerializable{
             'drop_pincode' => $this->getDrop_pincode(),
             'order_type'=>$this->getOrder_type(),
             'invoice_value'=>$this->getInvoice_value(),
-            'item_name'=>$this->getInvoice_value(),
+            'item'=>$this->getItem_name(),
             'length'=>$this->getLength(),
             'height'=>$this->getHeight(),
             'weight'=>$this->getWeight(),
